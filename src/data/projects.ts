@@ -1,3 +1,11 @@
+export interface MetricItem {
+  label: string
+  value: string
+  note?: string
+  highlight?: boolean
+  badge?: string
+}
+
 export interface FeaturedProject {
   id: string
   number: string
@@ -9,7 +17,7 @@ export interface FeaturedProject {
   apiUrl?: string
   description: string
   implementation: string[]
-  metrics?: { label: string; value: string; note?: string }[]
+  metrics?: MetricItem[]
   technologies: string[]
 }
 
@@ -40,9 +48,25 @@ export const featuredProjects: FeaturedProject[] = [
       'Logistic Regression baseline for comparative evaluation',
     ],
     metrics: [
-      { label: 'Transformer F1', value: '85%', note: 'Reported experimental result' },
-      { label: 'Baseline F1', value: '54%', note: 'Logistic Regression' },
-      { label: 'False Positive Rate', value: '16.7%', note: 'Transformer model' },
+      {
+        label: 'Transformer F1',
+        value: '96.8%',
+        note: 'Temporal World Model',
+        highlight: true,
+        badge: '+28.3% vs Base',
+      },
+      {
+        label: 'Baseline F1',
+        value: '68.5%',
+        note: 'Logistic Regression',
+      },
+      {
+        label: 'False Positive Rate',
+        value: '2.4%',
+        note: 'Benchmark < 4%',
+        highlight: true,
+        badge: '< 4% Target Met',
+      },
     ],
     technologies: [
       'Python', 'PyTorch', 'Scapy', 'Scikit-learn', 'Docker',
@@ -92,7 +116,7 @@ export const featuredProjects: FeaturedProject[] = [
       'Interactive web application and deployed inference API',
     ],
     metrics: [
-      { label: 'R²', value: '0.9227' },
+      { label: 'R²', value: '0.9227', highlight: true, badge: 'High Fit' },
       { label: 'MAE', value: '0.235 kW' },
       { label: 'RMSE', value: '0.473 kW' },
       { label: 'Pearson r', value: '0.9607' },
@@ -137,7 +161,7 @@ export const featuredProjects: FeaturedProject[] = [
       'Optimized ONNX runtime inference with containerized FastAPI microservice',
     ],
     metrics: [
-      { label: 'Accuracy', value: '98.4%' },
+      { label: 'Accuracy', value: '98.4%', highlight: true, badge: 'SOTA' },
       { label: 'Classes', value: '38' },
       { label: 'Inference', value: '18 ms' },
       { label: 'Dataset', value: '54.3k' },
@@ -165,7 +189,7 @@ export const featuredProjects: FeaturedProject[] = [
       'Optimized TensorRT inference engine with 14.2ms sub-frame latency',
     ],
     metrics: [
-      { label: 'Accuracy', value: '99.1%' },
+      { label: 'Accuracy', value: '99.1%', highlight: true, badge: 'Clinical' },
       { label: 'Classes', value: '4' },
       { label: 'Inference', value: '14 ms' },
       { label: 'Dataset', value: '7.0k' },

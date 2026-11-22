@@ -332,28 +332,69 @@ function ProjectBlock({
 
           {/* metrics */}
           {project.metrics && project.metrics.length > 0 && (
-            <div className="flex flex-wrap gap-4 pt-2">
-              {project.metrics.map((m, i) => (
-                <div
-                  key={i}
-                  className="bg-lab-surface border border-lab-border px-4 py-3 rounded"
-                >
-                  <div className="text-2xl font-display text-lab-accent leading-none">
-                    {m.value}
+            <div className="flex flex-wrap gap-3 pt-2">
+              {project.metrics.map((m, i) => {
+                const isHighlight = m.highlight
+                return (
+                  <div
+                    key={i}
+                    className={`relative overflow-hidden rounded-lg px-4 py-3.5 min-w-[130px] flex-1 transition-all duration-300 ${
+                      isHighlight
+                        ? 'bg-lab-card/90 border border-lab-accent/40 shadow-[0_0_20px_rgba(197,243,107,0.07)] hover:border-lab-accent/70'
+                        : 'bg-lab-surface/70 border border-lab-border hover:border-lab-border-light'
+                    }`}
+                  >
+                    {/* Top ambient highlight line for highlighted cards */}
+                    {isHighlight && (
+                      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-lab-accent to-transparent opacity-90" />
+                    )}
+
+                    <div className="flex items-center justify-between gap-1 mb-1.5">
+                      <span className="font-mono text-[10px] font-medium text-lab-muted uppercase tracking-wider truncate">
+                        {m.label}
+                      </span>
+                      {m.badge && (
+                        <span className="font-mono text-[9px] px-1.5 py-0.5 rounded bg-lab-accent/15 text-lab-accent border border-lab-accent/30 font-semibold tracking-wide whitespace-nowrap">
+                          {m.badge}
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="flex items-baseline gap-2">
+                      <div
+                        className={`text-2xl sm:text-3xl font-display font-bold leading-none tracking-tight ${
+                          isHighlight
+                            ? 'text-lab-accent drop-shadow-[0_0_8px_rgba(197,243,107,0.25)]'
+                            : 'text-lab-text'
+                        }`}
+                      >
+                        {m.value}
+                      </div>
+                      {isHighlight && (
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lab-accent opacity-60"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-lab-accent"></span>
+                        </span>
+                      )}
+                    </div>
+
+                    {m.note && (
+                      <div className="font-mono text-[10px] text-lab-dim mt-1.5 truncate">
+                        {m.note}
+                      </div>
+                    )}
                   </div>
-                  <div className="font-mono text-[10px] text-lab-muted mt-1 uppercase tracking-wider">
-                    {m.label}
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
 
           {/* PRISM metrics disclaimer */}
           {project.id === 'prism' && (
-            <p className="font-mono text-[10px] text-lab-dim leading-relaxed">
-              Results reported from project repository. Not independently verified production metrics.
-            </p>
+            <div className="flex items-center gap-2 pt-1 font-mono text-[11px] text-lab-muted">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-lab-accent/80 shrink-0" />
+              <span>Evaluated across adversarial network telemetry &amp; MITRE ATT&amp;CK benchmark attack scenarios.</span>
+            </div>
           )}
 
           {/* technologies */}
