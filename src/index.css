@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   GLOBAL STYLES — DIGITAL ENGINEER'S LAB
+   ═══════════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #2A2B2A #090A09;
+}
+
+body {
+  background-color: #090A09;
+  color: #F5F0EB;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #090A09;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2B2A;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3B3A;
+}
+
+/* Selection */
+::selection {
+  background: rgba(197, 243, 107, 0.25);
+  color: #F5F0EB;
+}
+
+/* Grain texture overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* Grid background base */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(197, 243, 107, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 243, 107, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.grid-bg-fine {
+  background-image:
+    linear-gradient(rgba(197, 243, 107, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(197, 243, 107, 0.015) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Technical label style */
+.tech-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8A8A8A;
+}
+
+/* Accent underline */
+.accent-line {
+  height: 1px;
+  background: linear-gradient(90deg, #C5F36B, transparent);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2A2B2A 20%, #2A2B2A 80%, transparent);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid #C5F36B;
+  outline-offset: 2px;
+}
+
+/* SVG path drawing animation */
+@keyframes drawPath {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 0.3; }
+}
+
