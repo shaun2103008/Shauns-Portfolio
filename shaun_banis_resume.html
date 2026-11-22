@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shaun Stephen Banis – AI/ML Engineer Resume</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 24px 16px;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+      padding: 22px 28px 20px 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    .header { border-bottom: 2.5px solid #1a3a5c; padding-bottom: 10px; margin-bottom: 10px; }
+    .name {
+      font-size: 26px; font-weight: 800; color: #0d2137;
+      letter-spacing: -0.5px; line-height: 1.1;
+    }
+    .title-tag {
+      font-size: 11px; font-weight: 600; color: #2563eb;
+      letter-spacing: 1.4px; text-transform: uppercase; margin-top: 2px;
+    }
+    .contact-row {
+      display: flex; flex-wrap: wrap; gap: 4px 14px;
+      margin-top: 7px; font-size: 10.5px; color: #374151; align-items: center;
+    }
+    .contact-row a { color: #2563eb; text-decoration: none; }
+    .contact-row span { color: #9ca3af; }
+
+    /* ── SECTION ── */
+    .section { margin-bottom: 9px; }
+    .section-title {
+      font-size: 10px; font-weight: 700; color: #2563eb;
+      letter-spacing: 1.6px; text-transform: uppercase;
+      border-bottom: 1.5px solid #dbeafe;
+      padding-bottom: 2px; margin-bottom: 6px;
+    }
+
+    /* ── SUMMARY ── */
+    .summary p { font-size: 10.5px; color: #1f2937; line-height: 1.6; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 10px; }
+    .skill-category { }
+    .skill-label { font-size: 9.5px; font-weight: 700; color: #374151; margin-bottom: 2px; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 2px; }
+    .tag {
+      background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe;
+      border-radius: 3px; padding: 1px 5px; font-size: 8.8px; font-weight: 500;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-row { display: flex; justify-content: space-between; align-items: flex-start; }
+    .edu-degree { font-size: 11px; font-weight: 700; color: #0d2137; }
+    .edu-school { font-size: 10px; color: #4b5563; margin-top: 1px; }
+    .edu-meta { font-size: 9.5px; color: #2563eb; font-weight: 600; white-space: nowrap; text-align: right; }
+    .cgpa-line { font-size: 9.5px; color: #374151; margin-top: 2px; }
+    .cgpa-pill {
+      display: inline-block; background: #dcfce7; color: #15803d;
+      border-radius: 3px; padding: 0px 5px; font-size: 9px; font-weight: 700; margin-left: 3px;
+    }
+
+    /* ── PROJECTS ── */
+    .project { margin-bottom: 7px; }
+    .project-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .project-name { font-size: 11px; font-weight: 700; color: #0d2137; }
+    .project-link { font-size: 9px; color: #2563eb; text-decoration: none; }
+    .project-subtitle { font-size: 9.5px; color: #2563eb; font-weight: 600; font-style: italic; margin-bottom: 3px; }
+    .project-bullets { padding-left: 11px; }
+    .project-bullets li { font-size: 10px; color: #1f2937; line-height: 1.55; margin-bottom: 1.5px; }
+    .tech-line { font-size: 9px; color: #6b7280; margin-top: 2px; }
+    .tech-line strong { color: #374151; }
+
+    /* ── ADDITIONAL PROJECTS ── */
+    .add-projects { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+    .add-proj-item { font-size: 10px; color: #374151; }
+    .add-proj-item strong { color: #0d2137; font-weight: 600; }
+    .add-proj-item::after { content: "·"; margin-left: 8px; color: #9ca3af; }
+    .add-proj-item:last-child::after { content: ""; }
+
+    /* ── HACKATHONS ── */
+    .hack-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 2px; }
+    .hack-name { font-size: 10.5px; font-weight: 600; color: #0d2137; }
+    .hack-desc { font-size: 10px; color: #4b5563; }
+
+    /* ── PRINT ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; padding: 15mm 15mm 12mm 15mm; }
+      .print-btn { display: none !important; }
+    }
+
+    .print-btn {
+      position: fixed; top: 16px; right: 16px;
+      background: #2563eb; color: white;
+      border: none; border-radius: 6px;
+      padding: 8px 16px; font-size: 13px; font-weight: 600;
+      cursor: pointer; box-shadow: 0 2px 10px rgba(37,99,235,0.4);
+      z-index: 999;
+    }
+    .print-btn:hover { background: #1d4ed8; }
+
+    .divider { width: 100%; height: 1.5px; background: #e5e7eb; margin: 7px 0; }
+  </style>
+</head>
+<body>
+  <button class="print-btn" onclick="window.print()">⬇ Save as PDF</button>
+
+  <div class="page">
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <div class="header">
+      <div class="name">Shaun Stephen Banis</div>
+      <div class="title-tag">Artificial Intelligence &amp; Machine Learning Engineering · Third Year</div>
+      <div class="contact-row">
+        <span>📍 Mumbai, Maharashtra, India</span>
+        <span>|</span>
+        <span>📞 +91 78210 96146</span>
+        <span>|</span>
+        <a href="mailto:shaunbanis66@gmail.com">shaunbanis66@gmail.com</a>
+        <span>|</span>
+        <a href="https://www.linkedin.com/in/shaun-banis-62024539/" target="_blank">linkedin.com/in/shaun-banis-62024539</a>
+        <span>|</span>
+        <a href="https://github.com/shaun2103008" target="_blank">github.com/shaun2103008</a>
+      </div>
+    </div>
+
+    <!-- ═══════════ SUMMARY ═══════════ -->
+    <div class="section summary">
+      <div class="section-title">Professional Summary</div>
+      <p>Third-year AI/ML Engineering student with a consistent academic record (CGPA 9.41) and a track record of building complete, deployable AI systems across cybersecurity, computer vision, generative AI, and predictive modelling. Has independently developed and shipped end-to-end applications — from data pipeline to deployed inference API — covering temporal transformer architectures for network threat forecasting, behavioral biometrics for bot detection, hybrid ensemble models for renewable energy prediction, and real-time computer vision for gesture-driven interaction. Approaches engineering problems by designing the full stack: data preprocessing, model architecture, evaluation, containerization, and user-facing deployment. Actively contributes to open-source repositories and maintains a live portfolio of shipped ML applications.</p>
+    </div>
+
+    <!-- ═══════════ SKILLS ═══════════ -->
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-label">Programming Languages</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-label">Machine Learning &amp; Deep Learning</div>
+          <div class="skill-tags">
+            <span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Scikit-learn</span>
+            <span class="tag">XGBoost</span><span class="tag">LightGBM</span><span class="tag">Random Forest</span>
+            <span class="tag">Ensemble Learning</span><span class="tag">Feature Engineering</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-label">Artificial Intelligence &amp; LLMs</div>
+          <div class="skill-tags">
+            <span class="tag">Large Language Models</span><span class="tag">Generative AI</span>
+            <span class="tag">RAG</span><span class="tag">Embeddings</span>
+            <span class="tag">Vector Databases</span><span class="tag">Transformer Architecture</span>
+            <span class="tag">AI Agents</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-label">Computer Vision</div>
+          <div class="skill-tags">
+            <span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">YOLO</span>
+            <span class="tag">Image Classification</span><span class="tag">Object Detection</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-label">Backend &amp; Web Development</div>
+          <div class="skill-tags">
+            <span class="tag">Flask</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span>
+            <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-label">Tools &amp; Infrastructure</div>
+          <div class="skill-tags">
+            <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Docker</span>
+            <span class="tag">VS Code</span><span class="tag">Google Colab</span><span class="tag">NVIDIA CUDA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ EDUCATION ═══════════ -->
+    <div class="section">
+      <div class="section-title">Education</div>
+
+      <div class="edu-row">
+        <div>
+          <div class="edu-degree">Bachelor of Engineering – Artificial Intelligence &amp; Machine Learning</div>
+          <div class="edu-school">St. John College of Engineering and Management · Mumbai, India</div>
+          <div class="cgpa-line">
+            Sem CGPA Progression:
+            <span class="cgpa-pill">9.23</span>
+            <span style="color:#9ca3af;font-size:9px;"> → </span>
+            <span class="cgpa-pill">9.43</span>
+            <span style="color:#9ca3af;font-size:9px;"> → </span>
+            <span class="cgpa-pill">9.41</span>
+            <span style="color:#6b7280;font-size:9px; margin-left:4px;">(current)</span>
+          </div>
+        </div>
+        <div class="edu-meta">Third Year · 2022 – 2026 (Expected)</div>
+      </div>
+
+      <div style="margin-top:5px;" class="edu-row">
+        <div>
+          <div class="edu-degree">Diploma in Electronics</div>
+          <div class="edu-school">Institution &amp; completion details to be confirmed</div>
+        </div>
+        <div class="edu-meta">Prior Qualification</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ PROJECTS ═══════════ -->
+    <div class="section">
+      <div class="section-title">Featured Projects</div>
+
+      <!-- P1: PRISM -->
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">PRISM – Predictive Risk Intelligence for Security Monitoring</div>
+          <a class="project-link" href="https://github.com/shaun2103008/PRISM" target="_blank">github.com/shaun2103008/PRISM</a>
+        </div>
+        <div class="project-subtitle">AI-Driven Predictive Cybersecurity &amp; Network Threat Forecasting Platform</div>
+        <ul class="project-bullets">
+          <li>Designed a <strong>Temporal Transformer World Model</strong> to learn network state transitions and forecast future attack trajectories, moving beyond reactive intrusion detection toward predictive defense.</li>
+          <li>Built a network telemetry pipeline using <strong>Scapy and PCAP files</strong> to extract flow-level features; mapped predicted behaviors to <strong>MITRE ATT&CK</strong> adversarial tactics and techniques.</li>
+          <li>Implemented <strong>multi-class attack classification</strong> across six traffic types: benign, SSH brute force, port scanning, HTTP flooding, Slowloris, and infiltration.</li>
+          <li>Deployed a <strong>Docker-based adversarial testing environment</strong> with an isolated attacker bot and target server for controlled red-team simulation.</li>
+          <li>Developed a real-time <strong>SOC dashboard</strong> using Streamlit and Plotly for network monitoring and threat visualization; included logistic regression as a comparative baseline model.</li>
+          <li>Reported results: Temporal Transformer <strong>85% F1 score</strong> vs. 54% logistic regression baseline; <strong>16.7% false-positive rate</strong> for the transformer model (experimental results, as per project README).</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · PyTorch · Scapy · Scikit-learn · Docker · Streamlit · Plotly · MITRE ATT&CK</div>
+      </div>
+
+      <!-- P2: Behavioral CAPTCHA -->
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">Behavioral CAPTCHA &amp; Biometric Telemetry Core</div>
+          <a class="project-link" href="https://github.com/shaun2103008/Behavioral-Capcha" target="_blank">github.com/shaun2103008/Behavioral-Capcha</a>
+        </div>
+        <div class="project-subtitle">Passive Bot Detection via Behavioral Biometrics &amp; ML Anomaly Detection</div>
+        <ul class="project-bullets">
+          <li>Built a <strong>behavioral telemetry recording system</strong> capturing mouse velocity, acceleration, curvature, jerk, scrolling patterns, and click dynamics for human–bot differentiation.</li>
+          <li>Implemented <strong>privacy-conscious keystroke telemetry</strong> that captures timing and dynamics without recording actual typed characters, passwords, or sensitive content.</li>
+          <li>Developed <strong>spatial-temporal feature extraction</strong> pipelines and integrated <strong>Random Forest and Isolation Forest</strong> classifiers for anomaly-based bot identification.</li>
+          <li>Built a <strong>FastAPI REST API</strong> for telemetry ingestion and verification; included Docker deployment support and an interactive trajectory visualization interface with simulated bot behavior.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · FastAPI · Random Forest · Isolation Forest · Docker · Behavioral Biometrics</div>
+      </div>
+
+      <!-- P3: Energy Predictor -->
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">Hybrid Solar-Wind Energy Yield Predictor</div>
+          <a class="project-link" href="https://github.com/shaun2103008/Hybrid-Solar-Wind-Energy-Yield-Predictor" target="_blank">github.com/shaun2103008/Hybrid-Solar-Wind-Energy-Yield-Predictor</a>
+        </div>
+        <div class="project-subtitle">Live App: hybrid-solar-wind-energy-yield-pred.vercel.app · Inference API: Hugging Face Spaces</div>
+        <ul class="project-bullets">
+          <li>Built a renewable energy forecasting platform using the <strong>DTU SOLETE dataset</strong> (10,969 hourly timestamps across 15 months of aligned solar, wind, and meteorological data).</li>
+          <li>Trained and evaluated <strong>Random Forest, XGBoost, LightGBM, and Gradient Boosting</strong> regressors; developed a <strong>hybrid voting ensemble</strong> combining the top three performers.</li>
+          <li>Hybrid ensemble achieved <strong>R² = 0.9227, MAE = 0.235 kW, RMSE = 0.473 kW, Pearson r = 0.9607</strong> (reported experimental results).</li>
+          <li>Deployed a <strong>live interactive web application</strong> (Vercel) and a separate <strong>ML inference API</strong> hosted on Hugging Face Spaces for public use.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · Scikit-learn · XGBoost · LightGBM · FastAPI · Next.js · Vercel · Hugging Face Spaces</div>
+      </div>
+
+      <!-- P4: Gesture Control -->
+      <div class="project">
+        <div class="project-header">
+          <div class="project-name">Gesture-Controlled Computer Application</div>
+          <a class="project-link" href="https://github.com/shaun2103008/gesture_control_project" target="_blank">github.com/shaun2103008/gesture_control_project</a>
+        </div>
+        <div class="project-subtitle">Real-Time Webcam Hand Tracking for Contactless System Control</div>
+        <ul class="project-bullets">
+          <li>Developed a real-time hand gesture recognition pipeline using <strong>MediaPipe and OpenCV</strong> for webcam-based landmark detection and tracking.</li>
+          <li>Implemented thumb-gesture-to-system-volume mapping via <strong>PyAutoGUI</strong> and designed the codebase to support extensible custom gesture-to-action bindings.</li>
+        </ul>
+        <div class="tech-line"><strong>Stack:</strong> Python · OpenCV · MediaPipe · PyAutoGUI · NumPy</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ ADDITIONAL PROJECTS ═══════════ -->
+    <div class="section">
+      <div class="section-title">Additional Project Portfolio</div>
+      <div class="add-projects">
+        <div class="add-proj-item"><strong>Brain Tumor Detection</strong> – Medical image classification using deep learning</div>
+        <div class="add-proj-item"><strong>Plant Disease Detection</strong> – Image-based plant health classification</div>
+        <div class="add-proj-item"><strong>Garbage Bin Detection</strong> – YOLOv9 real-time object detection</div>
+        <div class="add-proj-item"><strong>Driver Drowsiness Detection</strong> – Computer vision eye-state classifier</div>
+        <div class="add-proj-item"><strong>BuildSmartAI</strong> – AI-powered construction management platform</div>
+        <div class="add-proj-item"><strong>NutriSnap</strong> – AI meal image analysis &amp; nutrition estimation</div>
+        <div class="add-proj-item"><strong>SplitIt</strong> – Streamlit-based bill-splitting application</div>
+        <div class="add-proj-item"><strong>SMS Spam Detection</strong> – ML spam classifier with Flask API deployment</div>
+        <div class="add-proj-item"><strong>CareerOps</strong> – Career and job application workflow tool</div>
+      </div>
+    </div>
+
+    <!-- ═══════════ HACKATHONS ═══════════ -->
+    <div class="section">
+      <div class="section-title">Hackathons &amp; Competitions</div>
+      <div class="hack-row">
+        <div class="hack-name">TechTatva Hackathon</div>
+        <div class="hack-desc">· Participated in competitive technical hackathon; project details and achievements to be confirmed.</div>
+      </div>
+      <div class="hack-row">
+        <div class="hack-name">Datathon</div>
+        <div class="hack-desc">· Participated in data science competition; project and outcome details to be confirmed.</div>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+</body>
+</html>
